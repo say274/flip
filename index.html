@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <style>
+        body { 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background: transparent; 
+        }
+        img { 
+            max-width: 100%; 
+            max-height: 100vh; 
+            object-fit: contain; 
+        }
+    </style>
+</head>
+<body>
+
+    <img id="dateImage" src="" alt="">
+
+    <script>
+        // Define date ranges and corresponding images
+        const imageRanges = [
+            { start: "2025-02-16", end: "2025-02-16", url: "https://say274.github.io/flip/4.png" },
+            { start: "2025-02-17", end: "2025-02-23", url: "https://say274.github.io/flip/5.png" },
+            { start: "2025-02-24", end: "2025-03-02", url: "https://say274.github.io/flip/6.png" },
+            { start: "2025-03-03", end: "2025-03-09", url: "https://say274.github.io/flip/7.png" },
+            { start: "2025-03-10", end: "2025-03-16", url: "https://say274.github.io/flip/6.png" },
+            { start: "2025-03-17", end: "2025-03-23", url: "https://say274.github.io/flip/8.png" },
+            { start: "2025-03-24", end: "2025-03-30", url: "https://say274.github.io/flip/9.png" },
+            { start: "2025-03-31", end: "2025-04-06", url: "https://say274.github.io/flip/10.png" },
+            { start: "2025-04-07", end: "2025-04-13", url: "https://say274.github.io/flip/11.png" },
+            
+        ];
+
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split("T")[0];
+
+        // Get the image element
+        const imgElement = document.getElementById("dateImage");
+
+        // Find the matching image based on today's date falling in a range
+        let selectedImage = "https://say274.github.io/flip/default.png"; // Default image
+        for (const range of imageRanges) {
+            if (today >= range.start && today <= range.end) {
+                selectedImage = range.url;
+                break; // Stop checking once a match is found
+            }
+        }
+
+        // Set the image source
+        imgElement.src = selectedImage;
+    </script>
+
+</body>
+</html>
